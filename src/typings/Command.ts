@@ -1,6 +1,8 @@
 import {
+  ChatInputApplicationCommandData,
   CommandInteraction,
   CommandInteractionOptionResolver,
+  PermissionResolvable,
 } from "discord.js";
 import { ExtendedClient } from "../structures/Client";
 
@@ -16,3 +18,9 @@ interface RunOptions {
 }
 
 type RunFunction = (options: RunOptions) => any;
+
+export type CommandType = {
+  userPermissions?: PermissionResolvable[];
+  cooldown?: number;
+  run: RunFunction;
+} & ChatInputApplicationCommandData;
